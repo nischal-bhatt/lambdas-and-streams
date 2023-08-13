@@ -78,5 +78,11 @@ public class FP04CustomClass {
                 .max(Comparator.comparing(x -> x.getId()));
 
         System.out.println(max.get());
+
+        Course test = max.orElse(new Course("test", "6"));
+        System.out.println(test);
+
+        System.out.println(courses.stream().filter(x->x.getName().equals("RY"))
+                .findFirst().orElse(new Course("JYU","879")));
     }
 }
