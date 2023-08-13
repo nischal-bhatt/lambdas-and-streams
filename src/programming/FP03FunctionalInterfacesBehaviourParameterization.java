@@ -25,11 +25,19 @@ public class FP03FunctionalInterfacesBehaviourParameterization {
         String y = executeFunction(y2 -> Integer.toString(y2),245);
         System.out.println(y);
 
-        Supplier<Integer> supplier = () ->new Random().nextInt();
+        Random r = new Random();
+        int i = r.nextInt();
+        Supplier<Integer> supplier = () ->i;
 
 
         System.out.println(supplier.get());
 
+        executesupp(supplier);
+
+    }
+
+    private static void executesupp(Supplier<Integer> supplier) {
+        System.out.println(supplier.get());
     }
 
     private static String executeFunction(Function<Integer, String> function, int xxx) {
