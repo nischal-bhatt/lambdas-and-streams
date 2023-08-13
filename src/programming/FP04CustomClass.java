@@ -2,6 +2,7 @@ package programming;
 
 import java.util.Comparator;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -46,7 +47,8 @@ public class FP04CustomClass {
         List<Course> courses = List.of(new Course("R", "1"),
                 new Course("B", "2"),
                 new Course("C", "3"),
-                new Course("D", "44"));
+                new Course("D", "44"),
+                new Course("D1","44"));
 
         boolean b = courses.stream()
                 .allMatch(course -> course.getName().length() == 1);
@@ -95,6 +97,10 @@ public class FP04CustomClass {
         System.out.println(sum);
 
 
-
+        Map<String, List<Course>> collect1 = courses.stream().collect(Collectors.groupingBy(Course::getId));
+        Map<String, List<String>> collect2 = courses.stream().collect((Collectors.groupingBy(Course::getId,
+                Collectors.mapping(Course::getName, Collectors.toList()))));
+        System.out.println(collect1);
+        System.out.println(collect2);
     }
 }
