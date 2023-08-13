@@ -65,5 +65,12 @@ public class FP04CustomClass {
         List<Course> collect = courses.stream().sorted(courseComparator1).collect(Collectors.toList());
 
         System.out.println(collect);
+
+        List<Course> c1 = courses.stream()
+                .takeWhile(c -> c.getName().equals("R")).collect(Collectors.toList());
+        List<Course> c2 = courses.stream()
+                .dropWhile(c -> c.getName().equals("R")).collect(Collectors.toList());
+        System.out.println(c1);
+        System.out.println(c2);
     }
 }
