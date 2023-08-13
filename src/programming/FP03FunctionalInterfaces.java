@@ -1,6 +1,8 @@
 package programming;
 
 import java.util.List;
+import java.util.Optional;
+import java.util.function.BinaryOperator;
 import java.util.function.Consumer;
 import java.util.function.Function;
 import java.util.function.Predicate;
@@ -42,5 +44,20 @@ public class FP03FunctionalInterfaces {
         Integer abc = function.apply("abcasdadadadasdasdasdasdasd");
         System.out.println(abc);
         System.out.println(aaa);
+
+        int sum = numbers.stream().reduce(0,Integer::sum);
+
+        BinaryOperator<Integer> binaryOperator = new BinaryOperator<Integer>() {
+
+            @Override
+            public Integer apply(Integer integer, Integer integer2) {
+                return integer + integer2;
+            }
+        };
+
+        Optional<Integer> reduce = numbers.stream()
+                .reduce(binaryOperator);
+
+        System.out.println(reduce.get());
     }
 }
