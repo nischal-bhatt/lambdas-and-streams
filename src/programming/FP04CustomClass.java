@@ -4,6 +4,7 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 class Course {
     private String name;
@@ -84,5 +85,16 @@ public class FP04CustomClass {
 
         System.out.println(courses.stream().filter(x->x.getName().equals("RY"))
                 .findFirst().orElse(new Course("JYU","879")));
+
+        long sum = courses
+                .stream()
+                .map(c -> Integer.valueOf(c.getId()))
+                        .count();
+        //.reduce(0,(a,b22)-> a+b22);
+
+        System.out.println(sum);
+
+
+
     }
 }
