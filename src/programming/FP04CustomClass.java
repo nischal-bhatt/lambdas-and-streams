@@ -2,6 +2,7 @@ package programming;
 
 import java.util.Comparator;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 class Course {
@@ -72,5 +73,10 @@ public class FP04CustomClass {
                 .dropWhile(c -> !c.getName().equals("C")).collect(Collectors.toList());
         System.out.println(c1);
         System.out.println(c2);
+
+        Optional<Course> max = courses.stream()
+                .max(Comparator.comparing(x -> x.getId()));
+
+        System.out.println(max.get());
     }
 }
