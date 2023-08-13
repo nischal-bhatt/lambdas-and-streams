@@ -2,10 +2,10 @@ package programming;
 
 import java.util.List;
 import java.util.Optional;
-import java.util.function.BinaryOperator;
-import java.util.function.Consumer;
-import java.util.function.Function;
-import java.util.function.Predicate;
+import java.util.OptionalDouble;
+import java.util.Random;
+import java.util.function.*;
+import java.util.stream.IntStream;
 
 public class FP03FunctionalInterfacesBehaviourParameterization {
     @SuppressWarnings("unused")
@@ -24,6 +24,12 @@ public class FP03FunctionalInterfacesBehaviourParameterization {
         System.out.println(x);
         String y = executeFunction(y2 -> Integer.toString(y2),245);
         System.out.println(y);
+
+        Supplier<Integer> supplier = () ->new Random().nextInt();
+
+
+        System.out.println(supplier.get());
+
     }
 
     private static String executeFunction(Function<Integer, String> function, int xxx) {
